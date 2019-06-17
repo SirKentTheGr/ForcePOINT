@@ -372,7 +372,33 @@ Create new Super User
  - never uncheck Policy Handshake
  - Keep Automated Node Certificate Renewal
 
+**Lab 2 Single firewall installation**
 
+
+ **Factory reset of NGFW and ssh password**
+
+This gives the Administrator the ability to ssh to the firewall directly
+ssh root@172.31.200.1
+
+ - ' sg-clear-all '
+(this boots into recovery kernel)
+
+  - select option 2
+  - select yes for recovery wizard
+  - type in arbitrary hostname
+  - type in Root password - this is the console Password
+      - Password
+  - do not forget to select enable SSH Daemon
+  - click next
+  - select proper interface
+  - the last thing is that you need to enter a nope IP address manually
+    - 172.31.200.1
+    - Netmask/Prefix Length: * 24
+  - Ensure that Do not Contact is enabled
+
+- 'sg-reconfigure'
+ - select Contact and
+ - paste copied one time password into step 3 password
 
 
 
