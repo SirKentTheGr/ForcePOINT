@@ -468,6 +468,7 @@ ssh root@172.31.200.1
 #### Anti Spoofing
 - Anti-spoofing configuration is generated automatically based on the static routing configurations (based on the routing table)
 - can be adjusted manually if needed
+
       Basically - did the packet arrive on the correct  interface?
 
 
