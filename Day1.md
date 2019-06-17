@@ -269,13 +269,12 @@ NOTE: TCP PORT 3020 is required for LOG SERVER communication, which is responsib
 
 
 
-**ACCESSING LAB ENVIRONMENT: (I.E. not recommended)**
+    **ACCESSING LAB ENVIRONMENT: (I.E. not recommended)**
 
-https://traininglab.forcepoint.com/portal
+      https://traininglab.forcepoint.com/portal
 
-~~USERNane:	ngfw30@fpcert.com~~
-
-~~PASSWD:	o6EH1D7BwnOa~~
+        USERNane:	ngfw30@fpcert.com
+        PASSWD:	o6EH1D7BwnOa
 
 - avoid using Vsphere client
 - use the menu that pops up to launch VM's
@@ -286,10 +285,10 @@ Notes: trouble shooting
 
 Create new Super User
 
-  - systemctl stop sgMgtServer
-  - systemctl stop sgLogServer
-  - /usr/local/forcepoint/smc/bin/sgCreateAdmin.sh
-  - input username: and Password:
+    systemctl stop sgMgtServer
+    systemctl stop sgLogServer
+    /usr/local/forcepoint/smc/bin/sgCreateAdmin.sh
+    input username: and Password:
 
 
 ## SINGLE FW
@@ -375,30 +374,30 @@ Create new Super User
 **Lab 2 Single firewall installation**
 
 
- **Factory reset of NGFW and ssh password**
+    **Factory reset of NGFW and ssh password**
 
-This gives the Administrator the ability to ssh to the firewall directly
-ssh root@172.31.200.1
+      This gives the Administrator the ability to ssh to the firewall directly
 
- - ' sg-clear-all '
-(this boots into recovery kernel)
+          ssh root@172.31.200.1
+             ' sg-clear-all '
+              (this boots into recovery kernel)
 
-  - select option 2
-  - select yes for recovery wizard
-  - type in arbitrary hostname
-  - type in Root password - this is the console Password
-      - Password
-  - do not forget to select enable SSH Daemon
-  - click next
-  - select proper interface
-  - the last thing is that you need to enter a nope IP address manually
-    - 172.31.200.1
-    - Netmask/Prefix Length: * 24
-  - Ensure that Do not Contact is enabled
+                - select option 2
+                - select yes for recovery wizard
+                - type in arbitrary hostname
+                - type in Root password - this is the console Password
+                - Password
+                - do not forget to select enable SSH Daemon
+                - click next
+                - select proper interface
+                - the last thing is that you need to enter a nope IP address manually
+                - 172.31.200.1
+                - Netmask/Prefix Length: * 24
+                - Ensure that Do not Contact is enabled
 
-- 'sg-reconfigure'
- - select Contact and
- - paste copied one time password into step 3 password
+                - 'sg-reconfigure'
+                - select Contact and
+                - paste copied one time password into step 3 password
 
 
 ## ROUTING/ANTI-SPOOFING
@@ -469,7 +468,7 @@ ssh root@172.31.200.1
 - Anti-spoofing configuration is generated automatically based on the static routing configurations (based on the routing table)
 - can be adjusted manually if needed
 
-      Basically - did the packet arrive on the correct  interface?
+      Basically - did the packet arrive on the correct interface?
 
 
 ## POLICIES
