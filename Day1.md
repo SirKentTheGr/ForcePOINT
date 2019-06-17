@@ -448,9 +448,10 @@ ssh root@172.31.200.1
 **GRE is the workaround**
 
       The order in which Forcepoint Process connections is
-        1. ACCESS Rules
-        2. INSPECTION
-        3. NAT
+        1. Anti-spoofing
+        2. ACCESS Rules
+        3. INSPECTION
+        4. NAT
         4. ROUTING
 
 #### Dynamic ROUTING
@@ -458,13 +459,16 @@ ssh root@172.31.200.1
  - OSPF v2
  - BGP v 4
  - PIM (RCF 4601)
-- Configurable via Commandline
+- Configurable via Command line
  - RIP v1 & 2
 - SIngle node or clustering
 - Route monitoring and configuration backup / restore through Management Client is available even when configuring dynamic
 
 
 #### Anti Spoofing
+- Anti-spoofing configuration is generated automatically based on the static routing configurations (based on the routing table)
+- can be adjusted manually if needed
+      Basically - did the packet arrive on the correct  interface?
 
 
 ## POLICIES
