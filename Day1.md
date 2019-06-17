@@ -401,7 +401,70 @@ ssh root@172.31.200.1
  - paste copied one time password into step 3 password
 
 
-
 ## ROUTING/ANTI-SPOOFING
+
+#### Static ROUTING
+ - Defines next hop router for packets that NDFW is sending outgoing  
+  - Traffic reaches NGFW
+  - Routing Dictates which next hop
+ - Static routing is created by using the Routing Tools Pane in the routing section of the Engine Editor
+ - Route to directly connected networks are configure automatically
+ - static netlinks will not show up in the routers routing table (ip r)
+ - use the QueryRoute tab to trouble shoot routing
+ - there's more than one way to add a router
+  - Click on the add route tab and you can add route forever
+
+#### Static Routing with Route Metrics
+- Route metrics can be used to create active and standby route to the same destination network using static routing
+- Route monitoring is used to monitor health of routes and trigger NGFW to use standby route when active route has failed
+- Does not require applying dynamic source NAT to traffic like multilink
+- Secondary route can easily be observed based off of Metric Number in the GUI
+
+#### Static Routing with ECMP ROUTING
+- ECMP (equal-cost multi-path) routing enables packets destined to same destination network to take multiple routes via different connections
+- Benefit is increased bandwidth because multiple connections are used at same time
+- Route Monitoring is used to monitor ECMP route heath.
+- Does not require applying dynamic source NAT to traffic like multilink
+
+#### Special Routing Condition
+- Dynamic IP address (supports BGP and OSPF as well)
+ - Routing when a firewall has a dynamic IP addresses
+ - Management connections are initiated from note with dynamic control interfaces
+ - Routing can be applied to interface based off of DHCP automatically
+
+
+- Policy Routing (recommended that this is not used by instructor due to lack of port filtering)
+  - Packets from specific source IP addresses to specific destination addresses are routed through a selected gateway
+#### Multicast Routing
+  - The NDFW supports
+    - Static IP Multicast
+    - IGMP-based mulitcast forwarding (IGMP Proxying)
+    - Protocol-independent multicast (PIM)
+    - PIM Dense Mode
+    - PIM Sparse Mode
+    - PIM Source-Specific Multicast Mode
+
+**Multicast traffic can be forwarded over Route-based VPN but not over IPsec VPN---**
+**GRE is the workaround**
+
+      The order in which Forcepoint Process connections is
+        1. ACCESS Rules
+        2. INSPECTION
+        3. NAT
+        4. ROUTING
+
+#### Dynamic ROUTING
+- Configurable via SMC
+ - OSPF v2
+ - BGP v 4
+ - PIM (RCF 4601)
+- Configurable via Commandline
+ - RIP v1 & 2
+- SIngle node or clustering
+- Route monitoring and configuration backup / restore through Management Client is available even when configuring dynamic
+
+
+#### Anti Spoofing
+
 
 ## POLICIES
