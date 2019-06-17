@@ -1,47 +1,58 @@
-Day 1 - Monday June 6th, 2019
+# Day 1 - Monday June 6th, 2019
 =============================================================================
 "there's a time a place for dynamic routing, and that's never and in 	the trash"
 
-The only time Dynamic routing in required in the commnad line is with RIP, the rest can be done in the GUI"
+"The only time Dynamic routing in required in the command line is with RIP, the rest can be done in the GUI"
 
-AGENDA:
+## AGENDA:
+1. SMC OVERIVEW
 
-1. SMC OVERVIEW
+2. SINGLE FW
 
-Licensing covers everything, except for cloud services which would have to be purchased seperate
+3. ROUTING/ANTI-SPOOFING
 
-NGFW is just software and can be installed in three different roles
-  Firewall/vpn		(access control)
-  Layer 2 Firewall	(access control)
-  IPS
-The deep inspections is identical with all three roles
+4. POLICIES
 
-The capabilities are almost identical with all three Operting roles
-  high availability/clustering (L3) 	(not true clustering for L2FW - more like master slave)
-            (For IPS clustering - just connect to switch or vpn with heart beat enable)
-            (additionally - Serial clustering is baked into the liscense)
-  static and dynamic routing (L3)
-  network address translation (L3)
-  multilink (L3)
-  site to site vpn (L3)
-  client to gateway vpn (L3)
-  ssl vpn portal (L3)
-  authentication (L3)
-  server load balancing (L3)
-  IDS monitoring (L2)
-  Fail-open interfaces (L2) 		(L2FW does not fail open)
-  Anti-Malware
+## SMC OVERVIEW
+
+- Licensing covers everything, except for cloud services which would have to be purchased separate
+
+#### NGFW is just software and can be installed in three different roles
+  - Firewall/VPN		(access control)
+  - Layer 2 Firewall	(access control)
+  - IPS
+
+** The deep inspections is identical with all three roles **
+
+#### The capabilities are almost identical with all three Operating roles
+  - high availability/clustering (L3) 	
+     - (not true clustering for L2FW - more like master slave)
+     - (For IPS clustering - just connect to switch or vpn with heart beat enable)
+     - (additionally - Serial clustering is baked into the license)
+  - static and dynamic routing (L3)
+  - network address translation (L3)
+  - multilink (L3)
+  - site to site vpn (L3)
+  - client to gateway vpn (L3)
+  - ssl vpn portal (L3)
+  - authentication (L3)
+  - server load balancing (L3)
+  - IDS monitoring (L2)
+  - Fail-open interfaces (L2) 		(L2FW does not fail open)
+  - Anti-Malware
+
 add on services that require separate licensing
-  Web Filtering
-  Advanced Malware Detection* (Cloud Sandbox)
+  - Web Filtering
+  - Advanced Malware Detection (Cloud Sandbox)
 
 
-NGFW Engines:
-  Runs on an integrated, secure Linux-based operating system
-  Security patches are included in engine upgrades
-  Not Hot-swappable "We don't do Hot Fixes - it is integrated into upgrades)
 
-Appliances:
+#### NGFW Engines:
+  - Runs on an integrated, secure Linux-based operating system
+  - Security patches are included in engine upgrades
+  - Not Hot-swappable "We don't do Hot Fixes - it is integrated into upgrades)
+
+#### Appliances:
   NGFW - 51 FW : 	1.9 Gbps: NGFW 	200 MBPS: VPN 	1 GBPS	(Small Business)	(Multilink is possible but clustering isn't too practicle)
   NGFW - 110	1.5		150		.600	(Small Business)	(Multilink is possible but clustering isn't too practicle)
     330	4		350		1.4	(Small Business)
@@ -55,18 +66,12 @@ Appliances:
     3305	160		15		20	(Enterprise)
     6205	240		22		22	(Enterprise)
 
-Testing at NSS Labs:???
-  NGFW 3301 throughput
-  Data Sheet = ???
-  Enterprise Perimeter Protocol Mix???
-  Third variable ??? = ???
-  (I wasn't able to grab this data in time)
 
-**	Vacabulary:
-NGFW VIRTUAL APPLIANCE = 	NGFW engine installed on a virtualization platform = 	AWS, AZURE, VMWARE, Microsoft Hyper-V, KVM
-NGFW VIRTUAL CONTEXT = 		Split physical appliance into logical NGFWs =		physical machine with multiple interfaces
+#### **	Vocabulary:
+- NGFW VIRTUAL APPLIANCE = 	NGFW engine installed on a virtualization platform = 	AWS, AZURE, VMWARE, Microsoft Hyper-V, KVM
+- NGFW VIRTUAL CONTEXT = 		Split physical appliance into logical NGFWs =		physical machine with multiple interfaces
 
-NGFW Requirements:
+#### NGFW Requirements:
   Interfaces:
     1 or More certified network interfaces for the Firewal/VPN role
     2 or more certified network interfaces for IPS and IDS configuration
@@ -80,19 +85,19 @@ NGFW Requirements:
     Standby Clustering only for FW/VPN Role
     Clustering is not supported in IPS or L2FW Role
 
-**	Check out liturature _ HANDLEY & PAXON IPS Journal
+**	Check out literature _ HANDLEY & PAXON IPS Journal
 
 Installation of NGFW
   USB drive installation with automatic policy push
-    Management Client -> SMC -> Save Inintial Configuration File -> USB -> Machine
+    Management Client -> SMC -> Save Initial Configuration File -> USB -> Machine
 
   Manual Configuration via the configuration wizard
     Client ....Serial Connection...Machine
   You will need:
     IP ADDR. FOR Engine (Subnet MASK, GW)
     IP ADDR of SMC
-    ONE-TIME Pasword (set within the initial configuration file) (Painfully long AES 256)
-      (If wizard says "perhaps Passord is wrong" it is 100% wrong)
+    ONE-TIME Password (set within the initial configuration file) (Painfully long AES 256)
+      (If wizard says "perhaps Password is wrong" it is 100% wrong)
       'sg-contact-mgmt <OTP>' - USE IN CASE OF WRONG OTP
       'sg-reconfigure' - NEVER RUN IN PRODUCTION -WILL PROMP RECONFIGURATION OF FW
       'sg-reconfigure --no-shutdown'
@@ -124,9 +129,9 @@ NGFW Architecture
       connects to management server
     management server (required) (uses postgreSQL database)
       access by Management Client (Administrator)
-      connects to web portal server, log server, NGFW Engines, and Mangement Client
+      connects to web portal server, log server, NGFW Engines, and Management Client
     and log server (required)
-      access by mangement client
+      access by management client
       connects to 3rd party device, NGFW engines, Management Server, and Management Client
         3rd party devices require .2 of an SMC license
 
@@ -136,8 +141,8 @@ NGFW System Architecture
     Layer 2 NGFW
     Layer 2 IPS
     Layer 3 Virtual NGFW
-    Thrid Party Device
-  ** In a headquarters basic setup - You must allow conectivitey from oulying firewalls to connect back to SMC. Which takes two rules on 			Firewall template (this will not work with OOB management grid topology or VPN)
+    Third Party Device
+  ** In a headquarters basic setup - You must allow connectivity from outlying firewalls to connect back to SMC. Which takes two rules on  Firewall template (this will not work with OOB management grid topology or VPN)
 
 Capacity
   One management server can manage up to 2,000 NGFW engines
@@ -155,7 +160,7 @@ Management Server High Availability
   Control Management Servers through the Management Client
   Requires special licensing
 
-**NOTE: TCP PORT 3020 is required for LOG SERVER communication, which is responsible for all monitoring in the SMC
+** NOTE: TCP PORT 3020 is required for LOG SERVER communication, which is responsible for all monitoring in the SMC
 
 Configuring Additional Management Servers
   Install a new license that lists the IP address of all Management Servers
@@ -163,7 +168,7 @@ Configuring Additional Management Servers
     SG control (8902-8913)
     SG Status Monitoring (3023)
   Install the additional Management Servers on target servers.
-    New Management Server Element is autmatically created in SMC
+    New Management Server Element is automatically created in SMC
 
   Simply click Install as an Additional Management Server for High Availability
 
@@ -178,7 +183,7 @@ Log Server High Availability
 
 
 Setting log Servers as Backup
-  Create the additional Log Server elemente
+  Create the additional Log Server element
   Setting Log servers as Backup
     Open Properties of the primary Log Server
     Set up all the secondary log servers associated to primary
@@ -204,7 +209,7 @@ Upgrading Management Server HA System
     KO
 
 Management System Licensing
-  Subscription Liceneses (12 Months)
+  Subscription Licenses (12 Months)
     Per Seat Licensing (# of nodes)
     Bundle of Management and log server Licenses
     HA alternative
@@ -245,17 +250,17 @@ Node Counting in SMC
     FW-105 appliance = .2
   Appliances are still operating after maintenance contract, but license cannot be upgraded to new version. Software licenses can expire and 			policy refresh is not possible if that happens
 
-Generate Liceneses
+Generate Licenses
   IP address binding: The license is statically bound to the IP address of the licensed component
     Management Server
     log Server
     Web Portal Server
-  management server proof of license code binding (POL): Liceneses are dynamically bound to the Managment Server's POL code
+  management server proof of license code binding (POL): Licenses are dynamically bound to the Management Server's POL code
     Log Server
-    Web portal Serverl
-    Vitual appliances
+    Web portal Server
+    Virtual appliances
     Engines install on your own hardware
-  Appliance proof-of-serial (POS) code binding: The license is bound to the unique POS code of a preinstalled equipement
+  Appliance proof-of-serial (POS) code binding: The license is bound to the unique POS code of a preinstalled equipment
     Preinstalled equipment
 
 
@@ -266,8 +271,56 @@ https://traininglab.forcepoint.com/portal
 USERN:	ngfw30@fpcert.com
 PASSWD:	o6EH1D7BwnOa
 
- - with in the langing_machine (esx host)
+ - with in the landing_machine (esx host)
  - Select 'Open Console'
   no password - please allow post logon script to complete and to sleep for two minutes
 - avoid using Vsphere client
 - use the menu that pops up to launch VM's
+
+Complete Lab1:
+Notes: trouble shooting
+Create new Super User
+
+  - systemctl stop sgMgtServer
+  - systemctl stop sgLogServer
+  - /usr/local/forcepoint/smc/bin/sgCreateAdmin.sh
+  - input username: and Password:
+
+
+## SINGLE FW
+
+#### Key Benefits & Differentiators
+- One Software
+  - Various Platform (Virtual, Software, Appliances, Azure, AWS)
+  - 3 different Roles (NGFW/VPN,IPS,L2FW) under 1 NGFW Licenses
+  - multi-layer deployment for NGFW/VPN Roles
+  - Evolving Software
+- Multi-Layer inspections
+  - Apllication Control
+  - TLS inspections
+  - User Management
+
+- IPS and AET Prevention
+  - Full IPS capability
+  - Full-STACK normalization
+  - Detect advanced evasion
+- Centralized management
+  - Scalable and user-friendly
+  - Hierarchical POLICIES
+  - Log Analysis and Reporting
+  - Detect advanced evasion
+- Forcepoint Integration
+  - Web Filtering with Threatseeker Intelligence
+  - Web Gateway (Cloud Service)
+  - Malware Detection
+    - Forcepoint Advanced Malware Detection (Sandbox)
+    - McAfee GTI
+- multilink and VPN cabilities
+  - Load Balancing Links (ISP/MPLS)
+  - Run VPN over Multilink (HA)
+  - QoS on Multilinks
+
+
+## ROUTING/ANTI-SPOOFING
+
+## POLICIES
