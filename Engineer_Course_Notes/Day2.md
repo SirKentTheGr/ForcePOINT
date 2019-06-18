@@ -263,41 +263,11 @@ Tunnel Interfaces
     - Static source NAT. 1 to 1
     - Dynamic source NAT many to 1 or many to many
     - Also offers static destination translation - you can change the port number -
-    - when you create a server pool and you use the fire wall to load balance. 
+    - when you create a server pool and you use the fire wall to load balance.
+
+
  - NAT Rules
     - NAT rules define how NAT is applied to Traffic
     - NAT rules define how NAT is applied to Traffic
     - NAT can be applied to IPv4 and IPv6 traffic
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-[]
+    - Automatic Proxy ARP Recommended
