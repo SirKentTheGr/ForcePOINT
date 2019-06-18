@@ -274,4 +274,34 @@ Tunnel Interfaces
 
 #### Element Based NAT
  - Note - we do NAT-ing last
- - when you write an access rule () The destination is that servers external IP address;NAT-ing is done after access rules
+ - when you write an access rule () The destination is that servers external IP address; NAT-ing is done after access rules
+
+
+
+# Clustering
+
+- ForcePOINT also supports
+ - unicast
+ - Musticast
+ - Musticast W/IGMP
+ - PACKET DISPATCH - Preferred method for Forcepoint. The other methods are imbedded to support legacy equipment
+
+- Recommended always using clustering when possible
+
+- terms and nomenclature
+ - an interface is said to be clustered if
+ - The heartbeat interfaces are not clustered
+    - If you have the interfaces to spare, always run Heartbeat dedicated connectivity
+        - will require unique addresses
+    - Instructor recommends using crossover (debatable)
+    - The only thing that goes across the heart beat is state table data heartbeat messages.
+    - If you ran a TCPdump on the heartbeat link, it will suspiciously like multicast
+
+
+- NDI - Each node in the cluster will have it's own unique ip addresses. The are called NDI or Node Dedicated Interfaces. This is used by the management server to interact with each node directly.
+  - Additionally for Authentication, the NDI will be used when configuring authentication services
+
+- CVI - Cluster Virtual Interface - This is the cluster IP address
+    - The NDI is not the default gateway ever
+    - for the cvi - there is a bogus mac address that must be assigned ( google - fake mac address generator)
+        - The mac address must be a Unicast address - meaning it starts with 00 or an even number
