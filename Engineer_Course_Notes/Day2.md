@@ -271,3 +271,7 @@ Tunnel Interfaces
     - NAT rules define how NAT is applied to Traffic
     - NAT can be applied to IPv4 and IPv6 traffic
     - Automatic Proxy ARP Recommended
+
+#### Element Based NAT
+ - Note - we do NAT-ing last
+ - when you write an access rule () The destination is that servers external IP address;NAT-ing is done after access rules
