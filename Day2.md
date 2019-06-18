@@ -117,3 +117,13 @@ Tunnel Interfaces
       - Atlanta POLICY
 
 *Use the custom Template to apply to all of your firewall policies*
+
+ - Hierarchical Policies: Alias elements
+  - Share your Policies Using Alias elements
+  - Allow the same policy to be used on several engines
+  - The Alias represents one or several IP addresses
+    - the alias allow you to write a single rule, and apply it to multiple clusters, and will give it a unique translation value automatically
+  - Most Useful in Template Policies and Sub-Policies
+
+*A bit of advice is avoid using 'any' - for the most secure/tighter firewall rules*
+*'ANY' actually represent 0.0.0.0 which includes all private and public ip addresses*
