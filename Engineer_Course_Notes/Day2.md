@@ -221,16 +221,6 @@ Tunnel Interfaces
     - Connection reset
     - Silent Connection Discard
 
-# Policies Knowledge Check
-1.
-2.
-3.
-4.
-5.
-
-
-
-
 
 # SMC MASTER SET UP FOR DUMMIES
 
@@ -252,3 +242,62 @@ Tunnel Interfaces
 # Assign Multiple Firewalls with IP's within the same Sub-Net - to go out of one physical interface  
 
                     Right click -> Edit interfaces --> Multiple Virtual Resources
+
+## Module 5:  Distributed System Configuration
+
+#### Location and Contact address
+- Location and contact IP's allow you to change the Access IP according to Locations internally and externally
+- this can be managed in the properties of the Management Server
+   - Name & IPv4 address
+   - Contact address :Remote
+- Locations define whether the component uses a configured IP address  or contact address to communicate
+
+- SMC Communications
+    - Management Client uses
+        - TCP 8914-8918 to communicate with LogServer
+        - TCP 8902-8913 to communicate
+        - NGFW Engine uses TCP 3020 to communicate to Log Server
+
+#### Using NAT
+ - NAT type
+    - Static source NAT. 1 to 1
+    - Dynamic source NAT many to 1 or many to many
+    - Also offers static destination translation - you can change the port number -
+    - when you create a server pool and you use the fire wall to load balance. 
+ - NAT Rules
+    - NAT rules define how NAT is applied to Traffic
+    - NAT rules define how NAT is applied to Traffic
+    - NAT can be applied to IPv4 and IPv6 traffic
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[]
