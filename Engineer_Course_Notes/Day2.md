@@ -116,7 +116,7 @@ Tunnel Interfaces
       - Paris POLICY
       - Atlanta POLICY
 
-*Use the custom Template to apply to all of your firewall policies*
+            *Use the custom Template to apply to all of your firewall policies*
 
  - Hierarchical Policies: Alias elements
   - Share your Policies Using Alias elements
@@ -125,5 +125,30 @@ Tunnel Interfaces
     - the alias allow you to write a single rule, and apply it to multiple clusters, and will give it a unique translation value automatically
   - Most Useful in Template Policies and Sub-Policies
 
-*A bit of advice is avoid using 'any' - for the most secure/tighter firewall rules*
-*'ANY' actually represent 0.0.0.0 which includes all private and public ip addresses*
+          *A bit of advice is avoid using 'any' - for the most secure/tighter firewall rules*
+          *'ANY' actually represent 0.0.0.0 which includes all private and public ip addresses*
+- to 'Continue' action can be used for:
+  - Logging Options
+  - Deep inspections
+  - Protocol agents
+  - QoS classes
+- Most commonly used in Templates
+
+      *Continue rules are under 'ACTION', and simply direct traffic to continue down the policies*
+
+      *the best use case for the "continue rule" is logging*
+
+ - Sub-POLICIES (not required)
+  - Easier Policy management with shorter main POLICIES
+  - Faster rule traversal
+  - Option to limit administrator rights to Sub-Policies only
+        *Use the Jump rule to access sub-policies*
+        *This enforces boundaries on policies and conserves resources*
+        *If the sub policy is accessed, the traffic will continue through additional policies unless a Discard Action is included in the Sub-Policy*
+
+
+ - Ethernet Access rules
+  - Layer 2 Interface Policy
+  - IPS POLICY
+  - Layer 2 Firewall Policy
+  - With in the service Column the functionality i.e. arp, rarp, stp pertain to MAC addressese
