@@ -104,5 +104,16 @@ Tunnel Interfaces
                                                    |Custom TEMPLATE rules    <====  Custom TEMPLATE INSERT POINT
                                                    | NGFW POLICY Rules
                                                    =============================
- - FW/VPN and L2 FW Roles
+- FW/VPN and L2 FW Roles
  - Firewall Template and Layer 2 Firewall Template are Templates for Access Control only
+- FW/VPN, L2 FW, and IPS Roles
+  - Firewall Inspection Template, Layer 2 Firewall Inspections Template, IPS Template, are Templates for Access
+
+- Hierarchical Policies: Policy Templates
+ - Firewall TEMPLATE
+   - Custom TEMPLATE
+      - HELSINKI POLICY
+      - Paris POLICY
+      - Atlanta POLICY
+
+*Use the custom Template to apply to all of your firewall policies*
