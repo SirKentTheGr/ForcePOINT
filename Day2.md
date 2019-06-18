@@ -13,6 +13,6 @@
 10. What information is required for initial contact?
 11. What is the Preferred way to upgrade an Engine?
 12. What are 3 ways to Deploy Mgt. Client?
-
+13. How any standby servers are supported in SMC HA? (Mgt)
 
 ## POLICIES
