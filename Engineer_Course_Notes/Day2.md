@@ -1,4 +1,4 @@
-# Day 2 - Monday June 7th, 2019
+# Day 2 - Tuesday June 18th, 2019
 =============================================================================
 ## Day 1 review
 1. What are the servers that make up the SMC?

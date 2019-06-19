@@ -1,4 +1,4 @@
-# Day 1 - Monday June 6th, 2019
+# Day 1 - Monday June 17th, 2019
 =============================================================================
 "there's a time a place for dynamic routing, and that's never and in 	the trash"
 
@@ -78,7 +78,7 @@ add on services that require separate licensing
     - 3 or more certified network interfaces for Inline IPS or Layer 2 Firewall
 
   - Master Engine:
-    - Each Master Engine must run on a seperate physical NGFW device
+    - Each Master Engine must run on a separate physical NGFW device
     - All the Virtual Security Engines hosted by a Master Engine or Master Engine Cluser must hae the same role and the same Failure Mode
 
   - Compliance Limitations:
