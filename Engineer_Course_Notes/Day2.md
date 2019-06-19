@@ -182,8 +182,8 @@ Tunnel Interfaces
           Time
 #### Access Rules Actions List
 1. Allow
-2. Discard
-3. Refuse (never use for outside facing traffic)
+2. Discard (silently drops the connection)
+3. Refuse (never use for outside facing traffic)(will send ICMP error code)
 4. VPN
 5. BLACKLIST
 6. Continue

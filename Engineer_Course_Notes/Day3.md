@@ -23,7 +23,7 @@
 ## Answer Key
 1. Access Rules & NAT rules
 2. Inspection, file filtering, L2 interface policy
-3. Management Rules, Other common setting for services and tasks, discard all,
+3. Management Rules, Other common setting for services and tasks, discard all
 4. the FW inspection template has A series of continue rules that mark traffic for deep inspection.
 5. It is a place holder in a template that allows the administrator to control the order of the rules.
 6. - "Firewall rules" = "top down"/"in order"
@@ -73,3 +73,88 @@
 15. The Action options
   - (Right Click) edit action options, enable Deep Inspection
   - Never configure deep inspection on everything!
+
+===================================================================================================================
+#### Load Balancing
+
+- CVI - KNOW FOR TEST
+
+- NDI - KNOW FOR TEST
+  - VPN does not terminate to the NDI, it terminates to the CVI
+    - The IKE SA is known by all nodes in a cluster - SO there is almost zero delay in VPN connectivity and tunnel status in case of node failure.
+
+- Packet Dispatcher - The default and recommended clustering mode is called the Packet Dispatch mode
+  - selected by load and availability(i.e. State Table)
+  - To avoid a problem where the firewall is deciding the path for every connection, configure the individual nodes to handle the entire connection (sticky connection)
+  - If the primary heartbeat node goes down (Maintenance or anything else), the gratuitous ARP is what populates the switch table with the primary Heartbeat. If gratuitous ARP is turned off, this will not work.
+
+#### PCAP
+ - Two ways to take PCAP
+    1. Through the SMC, you can configure a PCAP on multiple nodes simultaneously
+    - Right Click Firewall - Select Tools - Capture Traffic - Select Interfaces - Configure PCAP Size
+    - This will temporarily store itself on the SMC and then SMC itself to the workstation.
+    2. You can also open simultaneous SSH connections and generate a TCPdump argument
+
+#### Firewall Cluster Configuration
+    1. Define a Firewall Cluster
+      - Right Click new Firewall Clustering
+    2. Set Clustering Properties
+      - This screen is optional
+      - Under Clustering - there will be two dummy nodes
+      - At the bottom: Clustering Mode: is by default to "Balancing"
+      - Heartbeat message Period (1000ms) and Heartbeat Failover Time (5000ms) are set by default
+    3. Define Physical / VLAN Interfaces
+      - Define L3 int first
+      - if it is a set of clustered interfaces - choose clustering as PACKET DISPATCH - where you fill in Fake MAC address.
+      - Apply QoS if necessary
+    4. Set IP Addresses
+      - If it is a clustered interfaces put the cluster IP (.254) is the IPv4 Address and the individual CVI addresses for Nodes.
+    5. Define Options
+      - Choose Primary control interface (Should be external if it is remotely being managed)
+      - Set Primary and Backup Heartbeat Interface (typically not through internal network)
+      - Set Identity Authentication Request IP
+      - Set Source for Authentication Request (Set to routing unless Authentication is over a VPN)
+      - Set Default IP address for Outgoing traffic
+    6. Save Initial Configuration
+      - Once the firewall cluster is configured, the license binding and the initial contact for each firewall node is done the same way as for a single firewall.
+      - Under 'View Details' - You will also have a OTP for each node in the firewall
+      - If the OTP is wrong - reinitiate the contact using 'sg-contact-mgmt <OTP>'
+
+      (for a two node cluster you will need 3 IP's per node)
+
+
+#### Tester Settings
+- Periodical self-tests to ensures proper functioning
+  - The swap-Space is a linux term and is used when that the node is out of space
+      - do not perform a reboot on the firewall!
+      - perform 'sginfo -f' for support reasons
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+===================================================================================================================
