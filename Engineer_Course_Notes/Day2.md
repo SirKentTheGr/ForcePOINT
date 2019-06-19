@@ -69,6 +69,7 @@ Tunnel Interfaces
   - Sub policy  
   - SSL VPN Policy
   - File Filtering Policy
+
         Firewall template (NO INSPECTION)
         ||
         ====> Custom template (Inspection)
