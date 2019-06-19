@@ -34,7 +34,7 @@
 - Where are Aliases used most often? - Templates
   - Templates are created to apply similar rules across multiple firewalls; preventing individual management
 
-##### Create an Aliases
+##### Create an Aliases in SMC
 - Alias Properties under POLICY
   - Add Translation values i.e. Network Subnet to Cluster values i.e. FW's under a single cluster
 
