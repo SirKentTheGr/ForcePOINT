@@ -162,10 +162,32 @@
 
 
 
+#### OVerview of NGFW VPNs
+- Policy-based VPNs
+  - Traffic is controlled based off of ACCESS RULES
+  - NATing on packets does not happen
+  - When networks on both sides have the same IP schemes, Nating must happen
+  - Site-to-Site VPN (IPsec)
+    - IPSEC opperated in Tunnel Mode
+
+    - Route-based VPN (IPsec)
+      - Packets do get the NAT Rules
+      - Due to the Nating you have to create a no NAT rule
+      - Required for Multicast traffic (OSPF)
+      - IPSec opperates in transport modes
 
 
+- Mobile VPNs (IPsec and SSL VPN)
 
 
+    (GRE is encapsulation more than anything)
+#### Site to Site VPN Terminology
+ - End Point - referes to Firewall external interfaces
+  - you can have more than one EndPoint
+
+- SITE - This is anything/everything you want to go across that tunnels
+- VPN Gateway - Based off the Routing inside of the SMC - the interfaces that have Default Gateway - Created automatically when you define another firewall.
+- External VPN Gateway - Required if you were setting up a VPN site with another Vender (I.E.PaloAlto). A ForcePOINT Firewall managed by a differenent SMC is still considered an External VPN Gateway
 
 
 
