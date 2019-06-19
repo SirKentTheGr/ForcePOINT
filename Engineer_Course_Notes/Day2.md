@@ -52,7 +52,7 @@ Tunnel Interfaces
                                                     ====== ROUTING
           Layer 2 interface policy - Ethernet ACCESS rules
           INSPECTION policy
-          Files FIltering Policy
+          Files Filtering Policy
 
 - Firewall Policy for FW/VPN Roles
 - Additionally Layer 2 Interface Policy if Layer 2 Interfaces are used: Diagram Below
