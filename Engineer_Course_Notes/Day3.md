@@ -129,6 +129,37 @@
       - do not perform a reboot on the firewall!
       - perform 'sginfo -f' for support reasons
 
+#### Outbound Multi-Link
+- Easy and Simple ISP multi-homing
+  - Dynamic Load-Balancing across  multiple WAN connections
+  - Bandwidth Aggregation - If you do multilink within a VPN
+  - Fault-tolerant VPN tunnels using multiple WAN connections
+
+- Limitations
+  - Multi-Link applies only in the Firewall/VPN role
+  - Currently supports IPv4 links only
+  - Not transparent failover,
+
+- Methods for Link Selections
+  - Round Trip Time (RTT)
+    - Measure time to setup connection on each NetLink and use to determine fastest link.
+  - 10:100
+    - Ratio Method
+      - Link capacity is used to create a ratio for distributing Traffic
+  - High Priority
+    - QoS Method
+      - QoS class is used to select outgoing NetLink
+
+- A few terms that need to be committed to memory
+
+  - Netlink
+    - It is an object that represents a link to the internet (isp)
+    - a netlink looks suspiciously like a router - however a Router can be used by the firewalls kernel (itself), the Netlink is not available by the Firewalls kernel
+    - A Netlink is based upon a Router
+  - Outboud MultiLink Objects
+    - Is a collection of all of your NetLinks
+  - To active you Multilink Dynamic Load Balancing : create a NAT rule connecting them. This can be done inside a VPN
+
 
 
 
