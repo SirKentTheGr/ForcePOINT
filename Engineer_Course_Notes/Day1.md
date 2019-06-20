@@ -303,7 +303,7 @@ Create new Super User
 - Multi-Layer inspections
   - Application Control
   - TLS inspections
-  - User Management
+  - User Identification
 
 - IPS and AET Prevention
   - Full IPS capability

@@ -94,6 +94,84 @@ Commands overview - found in product guide - Engine Commands
     - Match traffic based on Source, Destination, and Service
     - Leave the NAT cell empty
 
+#### Active Directory Integration
+- Directory Server provides access to information about user accounts in a user database.
+  - Internal Directory Server: The Management Server’s internal user database
+  - External directory servers: Active Directory or other LDAP
+
+#### Authentication method defines how the user can authenticate.
+
+- Internal authentication methods
+  - User Password
+  - Certificates
+  - Pre-shared keys (for use with some third-party VPN clients) (not recommended because it puts IKE into quick mode)
+
+- External authentication methods
+  - Radius
+  - Network Policy Server (Active Directory radius server) "Radius on Steroids"
+  - TACACS+
+  - LDAP
+
+#### Authentication Process with radius
+
+- Authentication Process with Active Directory
+    -This example illustrates how authentication is done when Active Directory is used both as the directory server and the Network Policy Server as Radius Server.
+
+1. A user requests authentication either when establishing a Client-to-Gateway VPN or to access a resource that requires authentication.
+
+2. The Firewall checks whether the user exists in the LDAP domain (according to the LDAP domain information for the default LDAP domain). By default, the default Authentication Method defined for the default LDAP domain is used.
+
+3. The firewall sends the authentication request to the Network Policy Server to verify the user-supplied credentials. The Network Policy Server server replies to the request with the result of the authentication (whether authentication is successful or not).
+
+4. The result of the authentication is sent to the user. If authentication succeeds, the firewall lists the user as an authenticated user, taking note of both user name and authentication method. When the user opens new connections, Access rules that contain an authentication requirement may now match
+
+
+#### User Authentication with Radius
+
+        1. Create an Active Directory Server Element
+        Task 1: Create an Active Directory Server Element Create Active Directory Server
+         element to represent the external Active Directory server. This allows you to
+          use the Active Directory user database as an external user database. In
+           addition, NPS/IAS authentication can be configured in the same element.
+           However, this is not mandatory and other authentication methods can be used as
+            well. The Active Directory Server element includes both the LDAP user
+             database (AD) and the RADIUS authentication service (NPS/IAS) configuration,
+             so only one element is needed for user authentication purposes. For other
+              external servers, you must create separate server elements for each of the
+               two features.
+
+        Define the LDAP settings. The settings include user account information (Bind
+           User ID) and other settings (like Base DN, the LDAP tree under which the
+              authenticating users’ accounts are stored) that the Firewalls and the
+               Management Server uses to connect to the Active Directory server. You can
+                also select LDAPS or Start TLS to enable Transport Layer Security (TLS)
+                 for connections to the server.
+
+
+        2. Define Authentication Server settings
+             Define the allowed authentication methods for the users stored on the
+              Active Directory server. If you use NPS/IAS  to authenticate the users,
+               authentication settings must be configured. The RADIUS protocol is
+                used.
+
+
+        3. Add an LDAP Domain
+          Each LDAP server has its own LDAP domain in the SMC. One LDAP domain can be
+           selected as the default LDAP domain. Users who belong to the default LDAP
+            domain do not need to specify the domain (for example, “username@domain”)
+             when they are authenticating. Default domain can also be defined per NGFW in
+              engine properties.
+
+              Select the default Authentication Methods for all accounts in this LDAP
+               Domain
+
+        4. Define User Authentication in Access Rules
+        When the LDAP domain is defined, the Management Server connects to the external
+         domain, and users and groups can be browsed from the Management Client.
+
+
+
+
 
 
 
