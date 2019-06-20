@@ -165,22 +165,76 @@ Commands overview - found in product guide - Engine Commands
               Select the default Authentication Methods for all accounts in this LDAP
                Domain
 
-        4. Define User Authentication in Access Rules
-        When the LDAP domain is defined, the Management Server connects to the external
-         domain, and users and groups can be browsed from the Management Client.
+        4. Connect to the LDAP Domain
+            When the LDAP domain is defined, the Management Server connects to the
+             external domain, and users and groups can be browsed from the Management
+             Client.
+
+        5. Define User Authentication in Access Rules
+          Define user authentication in the access rules. In Firewall Access Rules, the
+            users/groups and authentication methods defined in the Authentication cell are
+            used as matching criteria for accessing a particular service. Connections from
+              users that have not successfully authenticated or whose authentication has
+              expired do not match rules with an authentication requirement (the
+                connections are matched to rules further down in the policy).
+
+          To configure the authentication matching parameters, you can Drag and Drop
+           users and the associated authentication methods.
+
+           Alternatively you can Double-click the Authentication cell to open the
+            Authentication Parameters dialog.
+            • You should enable require authentication
+             and select one of the authorization types: by Connection or Client IP.
+             • In the Users tab of the Authentication Parameters dialog, you select the
+              Users or User Groups that this rule applies to.
+             • In the Authentication tab of the Authentication Parameters dialog, you
+              select the Authentication Method(s) or click Set to ANY to allow any
+               authentication method.
+
+#### Enhanced User Identification
+
+- Access Control by User and User Group without requiring Firewall authentication
+    - View User related statistics
+    - User names are mapped to IP addresses from user directories using FUID agents
+- FUID services monitors:
+    - Logon events to associate users with IP addresses
+    - Information about Group
+#### Endpoint Context Agent (ECA)
+- Endpoint Context Agent (ECA) collects the Windows endpoint metadata and sends it to the
+NGFW
+- Provides access control and/or logging based on:
+  - Executables initiating network connections
+  - Logged-in Windows user
+  - Platform attributes like OS version, antimalware.
+
+        Endpoint Context Agent (ECA) is a Windows client application that provides endpoint
+        information to the Forcepoint NGFW. The endpoint information can be used to identify
+        users, log their actions, and control access. Forcepoint NGFW can enforce security
+        policies based on the information that is sent by the endpoints. The information can
+        also be viewed in log data and used in reports. The main elements to use in Access
+        Rules are the new Endpoint Application elements that are delivered through dynamic
+          update packages. Applications can be identified by hash, certificate, or signer,
+          for example. You can also create custom elements.
+
+          ECA is a replacement for the McAfee Endpoint Intelligence Agent (EIA).
 
 
+#### Custom EndPoint Application
+- System EndPoint Application are provided by Dynamic Update packages
+- Custom Endpoint Application Identified By
+  - Signer Information
+  - List of Executables
+- Executable List Tool available to extract executable information from endpoints
 
 
+#### User Session Monitoring
+- Firewalls track active users identified by various components: FUID, ECA service and
+ also the users directly authenticated against the Firewall.
 
+- The User ID Service status is monitored in the Firewall info view
 
+#### User Dashboard
+Monitor user activities
 
-
-
-
-
-
-
-
-
- ==========================================================================================
+- In the Home view of the Management Client, there are user dashboards where you can see
+ an overview of user activity.
