@@ -288,3 +288,4 @@ Monitor user activities
 ### Connection control
 
   - Traffic Inspection
+  - A TLS Match is the way that the firewall can identify a Network Application or identify secure 443 traffic without decryption.
