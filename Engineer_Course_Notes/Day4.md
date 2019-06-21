@@ -271,7 +271,13 @@ Monitor user activities
     3. Define authentication settings (IPsec Client)
     4. Define users and authentication
     5. Create Access Rules
-      - The difference between Apply and Enforce - Typically have the same effect but if the action is set to enforce and a packet that arrive with a vpn rule not on the VPN tunnel a packet with enforce applied will drop the packet, Apply will allow the connection to traverse further down the Access rules in case there was a positive match.
+      - The difference between Apply and Enforce - Typically have the
+       same effect but if the action is set to enforce and a packet
+        that arrive with a vpn rule not on the VPN tunnel a packet
+         with enforce applied will drop the packet, Apply will allow
+         the connection to traverse further down the Access rules in
+          case there was a positive match.
+
 
 
 #### Troubleshooting Tools: VPN Client Diagnostics
