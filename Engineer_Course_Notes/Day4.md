@@ -285,6 +285,12 @@ Monitor user activities
       - Search for 'FAIL BALOON' to find diagnostic Information
   -Traffic Capture - (PCAP?)
 
+
+#### Mixing services in the same rule with network applications; 
+    - When the engine is processing a connection it will look for potential matches. When you mix them, the engine is not able to differentiate the two.
+    - Best practices, don't mix application process and services in the same rule.
+
+
 ### Connection control
 
   - Traffic Inspection
