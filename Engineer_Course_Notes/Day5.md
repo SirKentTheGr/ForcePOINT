@@ -4,7 +4,7 @@
 ### Deep Inspection:
 
 - Full inspection functionality
-  - Protocol validation 
+  - Protocol validation
   - System fingerprints for known exploits
 - Dynamic updates
     Constantly updated!
@@ -41,3 +41,41 @@
     other traffic.
 
 - Logical interfaces, are extremely portable and can be used in all three firewall roles.
+
+
+### Inspection Exceptions Rules Configuration
+- Allow more heuristic actions to behaviors
+
+
+
+
+### Malware Detection Process
+
+1. New file comes in
+2. Anti-Malware can creates a hash and verifies it against MacAfee GTI Global Threat Intelligence,
+3. Known File hash is also sent to Forcepoint Advanced malware Detection which is supported both on cloud or Local sandbox
+
+##### Malware Detection:
+  - In the access rules:
+        - If you want to send connections from HTTP for file filtering, simple elect that in the Action Column.
+
+  - In the File Filtering Policy:
+      - You can elect Allow After rules
+        - File Reputation Scan
+        - Anti-malware Scan
+        - Advanced Malware Sandbox Scan (AMD)
+            - You can specify the buffering level: Medium
+            - Log Level When File Is Discarded: Alert
+            - Action When No Scanners Are Available: Allow
+        - keep Decompress Archives and Rematch Content
+
+    - Anti-Malware Scan
+        - Based on McAfee's Engine. Mirrors - update.nai.com/Products/CommonUpdater
+        - Unfortunately - it is not intended to be used all the time.
+        - Supported Protocols (IPv4)
+            - HTTP, HTTPs
+            - FTP
+            -SMTP,POP3, IMAP
+        - File filtering Policy determines which traffic is inspected for malware
+    - McAfee GTI File Reputation Service
+        - Cloud File Reputation Service
