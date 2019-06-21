@@ -1,4 +1,4 @@
-# Day 4 - Wednesday June 20th, 2019
+# Day 4 - Thursday June 20th, 2019
 =============================================================================
 
 Commands overview - found in product guide - Engine Commands
@@ -238,3 +238,47 @@ Monitor user activities
 
 - In the Home view of the Management Client, there are user dashboards where you can see
  an overview of user activity.
+
+#### Mobile VPN
+- Client based : IPsec & SSL VPN client
+  - Client software installation
+  - Enable secure access to any service and protocol in the corporate
+ network
+
+- Clientless: SSL VPN Portal
+   - No need to install new software to enable secure connection to Web
+ services
+   - Log-in via SSL VPN portal
+
+- The NAT Pool method is the quickest methods
+  - No DCHP or Virtual Adapter needed
+  - all users share the same NAT-ed internal IP addresses (this is bad)
+- The second method is using the Virtual Adapter Methods
+  - Virtual IP address is attached to a Virtual Adapter on the VPN
+   client
+  - Virtual IP address is assigned by DHCP server
+
+### Mobile VPN VPN Client High Availability
+- If the Forcepoint NGFW which terminates the client VPN has multiple
+ endpoints these provide high availability for client VPN connections
+  too. VPN clients have knowledge of the other end-points and the
+   Mobile VPN tunnel is established with the other end-point if the
+    active end-point fails.
+
+####  Gateway Configuration
+    1. Define the VPN client address management
+    2. Define the Mobile VPN
+    3. Define authentication settings (IPsec Client)
+    4. Define users and authentication
+    5. Create Access Rules
+      - The difference between Apply and Enforce - Typically have the same effect but if the action is set to enforce and a packet that arrive with a vpn rule not on the VPN tunnel a packet with enforce applied will drop the packet, Apply will allow the connection to traverse further down the Access rules in case there was a positive match.
+
+
+#### Troubleshooting Tools: VPN Client Diagnostics
+  - Under Diagnostic Information
+      - Search for 'FAIL BALOON' to find diagnostic Information
+  -Traffic Capture - (PCAP?)
+
+### Connection control
+
+  - Traffic Inspection
